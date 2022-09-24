@@ -81,27 +81,25 @@ print(f'the sum of digits of your number is: {sum_of_dig(number)}')
    '''
 def matrix(length: int, high: int):
       count1 = 1;
-      lst = [];
+      string = '';
       res = [];
       while count1 <= length:
-          lst.append('*');
+          string += '*';
           count1 += 1;
-      res.append(lst); 
+      res.append(string); 
       count1 = 1;
       count2 = high - 2; 
-      mid = ['*']
+      mid = '*';
       while count1 < length - 1:
-          mid.append(' ')
+          mid += ' ';
           count1 += 1;
-      mid.append('*')
+      mid += '*';
       while count2 > 0:
           res.append(mid);
           count2 -= 1;
-      res.append(lst);
+      res.append(string);
       for num in res:
-          print(''.join(num));
-
-matrix(5, 5)
-
+          print(num);
+matrix(5, 5);
 
 
