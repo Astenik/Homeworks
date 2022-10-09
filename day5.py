@@ -137,21 +137,23 @@ for i in range(5):
         print(res_matrix[i][j], end = ' ')
     print(' ')
 
-    
-    
 
 
+# 4-th task
 
+matrix = []
+line = []
 
+n = int(input("enter count of lines: "))
+m = int(input("enter count of columns: "))
 
+for i in range(n):
+    for j in range(m):
+        line.append(int(input("enter the number: ")))
+    matrix.append(line)
+    line = []
 
-
-
-
-
-
-
-
-
-
-
+for i in range(n - 1, -1, -1):
+    for j in range(m - 1, -1, -1):
+        print(matrix[i][j], end = ' ')
+    print(' ')
