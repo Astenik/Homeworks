@@ -33,32 +33,59 @@ def _filter(func, lst: list):
         if(func(num)):
             res.append(num)
     return res 
-  
-  
-  
+
 #task 2
 #tik-tak-toe
 
-def  is_win(board: list):
-    for i in range(3):
-        c1 = 0
-        c2 = 0
-        for j in range(3):
-            if board[i][j] == 'X':
-                c1 += 1 
-            elif board[i][j] == 'O':
-                c2 += 1 
-        if (c1 == 3) or (c2 == 3):
-            return True
-    i = 0
-    for k in range(3):
-        if board[i][k] == board[i + 1][k] == board[i + 2][k]:
-            return True 
-    if board[i][i] == board[i + 1][i + 1] == board[i + 2][i + 2]:
-        return True 
-    if board[i][i + 2] == board[i + 1][i + 1] == board[i + 2][i]:
-        return True 
+import random
+
+def insert_2(matrix: list) -> list:
+    i = random.randint(0, 2)
+    j = random.randint(0, 2)
+    while matrix[i][j] != 0:
+        i = random.randint(0, 3)
+        j = random.randint(0, 3)
+    matrix[i][j] = 2 
+    return matrix 
+
+def is_equal_line(lst: list, line: int) ->bool:
+    num = lst[line][0]
+    if num != 0:
+        for i in range(len(lst[line])):
+            if lst[line][i] != num:
+                return False
+        return True
     return False
+def is_equal_column(lst: list, column: int) -> bool:
+    num = lst[0][column]
+    if num != 0: 
+        for i in range(len(matrix)):
+            if lst[i][column] != num:
+                return False
+        return True
+    return False
+
+def is_win(matrix: list) -> bool:
+    for i in range(len(matrix)):
+        if is_equal_column(matrix, i) or is_equal_line(matrix, i):
+            return True
+    j = 1
+    num = matrix[0][0]
+    while j < len(matrix):
+        if (matrix[j][j] != num) or (num == 0):
+            return False 
+        j += 1 
+    return True 
+    k = 0
+    j = len(matrix[0]) - 1 
+    num1 = matrix[0][j]
+    while k < len(matrix):
+        if (matrix[k][j] != num1) or (num1 == 0):
+            return False 
+        k += 1 
+        j -= 1 
+    return True  
+
   
   
 #task 3
@@ -84,7 +111,23 @@ def merge(nums1: list, nums2: list) -> list:
     
     return res 
 
-  
+
+#task 5 
+
+def is_sorted(lst: list) -> bool:
+    i = 0
+    while lst[i] == lst[i + 1]:
+        i += 1 
+    if lst[i] > lst[i + 1]:
+        for j in range(i, len(lst) - 1):
+            if lst[j] < lst[j + 1]:
+                return False 
+    elif lst[i] < lst[i + 1]:
+        for j in range(i, len(lst) - 1):
+            if lst[j] > lst[j + 1]:
+                return False 
+    return True 
+
   
   
   
